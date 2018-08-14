@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hibernate.entity.Emp" table="emp" >
+        <id name="empNo" type="java.lang.Integer">
+            <column name="empNo" />
+            <generator class="native" />
+        </id>
+        <property name="empName" type="java.lang.String">
+            <column name="empName" />
+        </property>
+        <property name="empSal" type="java.lang.Double">
+            <column name="empSal" precision="22" scale="0" />
+        </property>
+        <property name="empAge" type="java.lang.Integer">
+            <column name="empAge" />
+        </property>
+        
+        <!--  -->
+        <many-to-one name="dept" column="deptNo" class="com.hibernate.entity.Dept" ></many-to-one>
+        
+    </class>
+</hibernate-mapping>

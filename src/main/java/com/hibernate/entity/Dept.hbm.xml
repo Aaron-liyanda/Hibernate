@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.hibernate.entity.Dept" table="dept">
+		<!-- 主键关系 -->
+		<id name="deptNo" column="deptNo" type="java.lang.Integer">
+				<!-- 
+					主键生成策略 assigned（人为控制） native
+						oracle
+					<generator class="sequence">
+						<param name="sequence">hibernate_id</param>
+					</generator> 
+				-->
+			<generator class="native"/>
+		</id>
+		
+		<!-- 普通字段的关系 -->
+		<property name="name" column="name" type="java.lang.String"></property>
+		<property name="location" column="location" type="java.lang.String"></property>
+		
+		<set name="list" cascade="all">  <!-- delete save-update all -->
+			<key column="deptNo"></key>
+			<one-to-many class="com.hibernate.entity.Emp"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>
